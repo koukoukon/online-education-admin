@@ -56,23 +56,66 @@ export const constantRoutes = [
   },
 
   {
-    path: '/example',
+    path: '/teacher',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: '讲师管理', icon: 'el-icon-s-help' },
+    redirect: '/teacher/table',
+    name: 'Teacher',
+    meta: { title: '讲师管理', icon: 'people' },
     children: [
       {
         path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
+        name: 'TeacherTable',
+        component: () => import('@/views/teacher/index'),
         meta: { title: '讲师列表', icon: 'table' }
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: '树', icon: 'tree' }
+        path: 'add',
+        name: 'TeacherAdd',
+        component: () => import('@/views/teacher/form'),
+        meta: { title: '添加讲师', icon: 'form' }
+      },
+      {
+        path: 'edit/:teacherId',
+        name: 'TeacherEdit',
+        component: () => import('@/views/teacher/form'),
+        meta: { title: '编辑讲师', icon: 'form' },
+        props: true,
+        hidden: true
+      }
+    ]
+  },
+  {
+    path: '/subject',
+    component: Layout,
+    redirect: '/subject/table',
+    name: 'Subject',
+    meta: { title: '课程分类管理', icon: 'education' },
+    children: [
+      {
+        path: 'table',
+        name: 'SubjectTable',
+        component: () => import('@/views/subject/index'),
+        meta: { title: '课程分类列表', icon: 'table' }
+      },
+      {
+        path: 'import',
+        name: 'SubjectImport',
+        component: () => import('@/views/subject/import'),
+        meta: { title: '导入课程分类', icon: 'zip' }
+      },
+      {
+        path: 'add',
+        name: 'SubjectAdd',
+        component: () => import('@/views/subject/form'),
+        meta: { title: '添加课程分类', icon: 'form' }
+      },
+      {
+        path: 'edit/:subjectId',
+        name: 'SubjectEdit',
+        component: () => import('@/views/subject/form'),
+        meta: { title: '编辑课程分类', icon: 'form' },
+        props: true,
+        hidden: true
       }
     ]
   },
@@ -154,7 +197,7 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
+        path: 'https://github.com/koukoukon/online-education-admin',
         meta: { title: '外链', icon: 'link' }
       }
     ]
