@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function getTeacherPageByCondition(pageNum, pageSize, teacherQuery) {
   return request({
-    url: '/teacher',
+    url: 'teacher',
     method: 'get',
     params: {
       'pageNum': pageNum,
@@ -17,28 +17,28 @@ export function getTeacherPageByCondition(pageNum, pageSize, teacherQuery) {
 
 export function removeTeacherById(teacherId) {
   return request({
-    url: `/teacher/${teacherId}`,
+    url: `teacher/${teacherId}`,
     method: 'delete'
   })
 }
 
 export function saveTeacher(teacher) {
   return request({
-    url: '/teacher',
+    url: 'teacher',
     method: 'post',
     data: teacher
   })
 }
 export function updateTeacherById(teacherId, teacher) {
   return request({
-    url: `/teacher/${teacherId}`,
+    url: `teacher/${teacherId}`,
     method: 'put',
     data: teacher
   })
 }
 export function getTeacherById(teacherId) {
   return request({
-    url: `/teacher/${teacherId}`,
+    url: `teacher/${teacherId}`,
     method: 'get'
   })
 }

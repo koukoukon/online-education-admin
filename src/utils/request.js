@@ -69,6 +69,13 @@ service.interceptors.response.use(
       }
       return Promise.reject(new Error(res.message || 'Error'))
     } else {
+      if (response.code === 500) {
+        this.$message({
+          message: response.message,
+          type: 'warning',
+          duration: 3 * 1000
+        })
+      }
       return res
     }
   },

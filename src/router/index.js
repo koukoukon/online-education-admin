@@ -102,18 +102,51 @@ export const constantRoutes = [
         name: 'SubjectImport',
         component: () => import('@/views/subject/import'),
         meta: { title: '导入课程分类', icon: 'zip' }
+      }
+    ]
+  },
+  {
+    path: '/course',
+    component: Layout,
+    redirect: '/course/table',
+    name: 'Course',
+    meta: { title: '课程管理', icon: 'education' },
+    children: [
+      {
+        path: 'table',
+        name: 'CourseTable',
+        component: () => import('@/views/course/index'),
+        meta: { title: '课程列表', icon: 'table' }
       },
       {
-        path: 'add',
-        name: 'SubjectAdd',
-        component: () => import('@/views/subject/form'),
-        meta: { title: '添加课程分类', icon: 'form' }
+        path: 'info',
+        name: 'CourseInfo',
+        component: () => import('@/views/course/info'),
+        meta: { title: '课程基本信息', icon: 'zip' },
+        props: true,
+        hidden: true
       },
       {
-        path: 'edit/:subjectId',
-        name: 'SubjectEdit',
-        component: () => import('@/views/subject/form'),
-        meta: { title: '编辑课程分类', icon: 'form' },
+        path: 'info/:courseId',
+        name: 'CourseInfoEdit',
+        component: () => import('@/views/course/info'),
+        meta: { title: '课程基本信息', icon: 'zip' },
+        props: true,
+        hidden: true
+      },
+      {
+        path: 'chapter/:courseId',
+        name: 'CourseChapter',
+        component: () => import('@/views/course/chapter'),
+        meta: { title: '课程章节', icon: 'zip' },
+        props: true,
+        hidden: true
+      },
+      {
+        path: 'publish/:courseId',
+        name: 'CoursePublish',
+        component: () => import('@/views/course/publish'),
+        meta: { title: '发布课程', icon: 'zip' },
         props: true,
         hidden: true
       }
