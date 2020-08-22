@@ -2,8 +2,17 @@ import request from '@/utils/request'
 
 export function getSubjectTreeNode() {
   return request({
-    url: 'subject',
+    url: 'subject/treeNode',
     method: 'get'
+  })
+}
+export function getSubjectByParentId(subjectParentId) {
+  return request({
+    url: 'subject',
+    method: 'get',
+    params: {
+      'subjectParentId': subjectParentId
+    }
   })
 }
 export function removeSubjectById(subjectId) {

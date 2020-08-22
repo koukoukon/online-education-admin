@@ -15,10 +15,10 @@
         </el-select>
       </el-form-item>
       <el-form-item label="讲师资历" prop="teacherIntro">
-        <el-input v-model="teacher.teacherIntro" minlength="1" maxlength="255" show-word-limit style="width: 500px"/>
+        <el-input v-model="teacher.teacherIntro" minlength="1" maxlength="255" show-word-limit style="width: 500px" />
       </el-form-item>
       <el-form-item label="讲师简介" prop="teacherCareer">
-        <el-input v-model="teacher.teacherCareer" type="textarea" :rows="10" style="width: 500px"/>
+        <el-input v-model="teacher.teacherCareer" type="textarea" :rows="10" style="width: 500px" />
       </el-form-item>
       <el-form-item>
         <pan-thumb :image="teacher.teacherAvatar" />
@@ -32,7 +32,7 @@
           :key="imageCropperKey"
           :width="300"
           :height="300"
-          :url="VUE_APP_BASE_API+'/oss/file/upload'"
+          :url="VUE_APP_BASE_API+'/oss/file/uploadAvatar'"
           lang-type="zh"
           field="teacherAvatar"
           @close="close"
@@ -54,7 +54,6 @@ import PanThumb from '@/components/PanThumb'
 export default {
   name: 'Form',
   components: { ImageCropper, PanThumb },
-  props: ['teacherId'],
   data() {
     return {
       VUE_APP_BASE_API: process.env.VUE_APP_BASE_API,
@@ -131,20 +130,24 @@ export default {
     },
     handleEdit() {
       updateTeacherById(this.teacherId, this.teacher).then((response) => {
-        this.$message({
-          type: 'success',
-          message: '修改成功'
-        })
-        this.$router.push({ path: '/teacher/table' })
+        if (response.code === 200) {
+          this.$message({
+            type: 'success',
+            message: '修改成功'
+          })
+          this.$router.push({ path: '/teacher/table' })
+        }
       })
     },
     handleAdd() {
       saveTeacher(this.teacher, this.teacher).then((response) => {
-        this.$message({
-          type: 'success',
-          message: '添加成功'
-        })
-        this.$router.push({ path: '/teacher/table' })
+        if (response.code === 200) {
+          this.$message({
+            type: 'success',
+            message: '添加成功'
+          })
+          this.$router.push({ path: '/teacher/table' })
+        }
       })
     }
   }
@@ -153,9 +156,4 @@ export default {
 </script>
 
 <style scoped>
-.avatar{
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-}
 </style>

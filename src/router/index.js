@@ -122,15 +122,14 @@ export const constantRoutes = [
         path: 'info',
         name: 'CourseInfo',
         component: () => import('@/views/course/info'),
-        meta: { title: '课程基本信息', icon: 'zip' },
-        props: true,
-        hidden: true
+        meta: { title: '添加课程基本信息', icon: 'zip' },
+        props: true
       },
       {
         path: 'info/:courseId',
         name: 'CourseInfoEdit',
         component: () => import('@/views/course/info'),
-        meta: { title: '课程基本信息', icon: 'zip' },
+        meta: { title: '编辑课程基本信息', icon: 'zip' },
         props: true,
         hidden: true
       },

@@ -42,3 +42,9 @@ export function getTeacherById(teacherId) {
     method: 'get'
   })
 }
+export function getTeacherList() {
+  return request({
+    url: 'teacher',
+    method: 'get'
+  })
+}
